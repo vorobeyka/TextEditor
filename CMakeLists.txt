@@ -31,6 +31,8 @@ if(ANDROID)
   add_library(utext SHARED
     main.cpp
     mainwindow.cpp
+    fileedit.cpp
+    toolBarEdit.cpp
     mainwindow.h
     mainwindow.ui
     resources.qrc
@@ -39,6 +41,8 @@ else()
   add_executable(utext
     main.cpp
     mainwindow.cpp
+    fileedit.cpp
+    toolBarEdit.cpp
     mainwindow.h
     mainwindow.ui
     resources.qrc

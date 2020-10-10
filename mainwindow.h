@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QFileSystemModel>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -14,8 +15,36 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+    void setTreeView(QString = "");
+    void chooseDir();
+
+private slots:
+    void on_actionNew_triggered();
+    void on_actionOpen_triggered();
+    void on_actionSave_triggered();
+    void on_actionSave_as_triggered();
+    void on_actionExit_triggered();
+    void on_actionCopy_triggered();
+    void on_actionCut_triggered();
+    void on_actionPaste_triggered();
+    void on_actionFind_triggered();
+    void on_actionReplace_triggered();
+    void on_actionSelect_All_triggered();
+    void on_actionZoom_in_triggered();
+    void on_actionZoom_out_triggered();
+    void on_actionBold_triggered();
+    void on_actionItalic_triggered();
+    void on_actionUnderline_triggered();
+    void on_actionStrike_triggered();
+    void on_actionColor_triggered();
+    void on_actionFont_triggered();
+    void on_actionHelp_triggered();
+    void on_actionAbout_triggered();
+
+    void FileClicked(QModelIndex index);
 
 private:
     Ui::MainWindow *ui;
+    QFileSystemModel *m_DirsList { new QFileSystemModel(this) };
 };
 #endif // MAINWINDOW_H
