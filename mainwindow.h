@@ -3,6 +3,11 @@
 
 #include <QMainWindow>
 #include <QFileSystemModel>
+#include <QCloseEvent>
+#include <QFile>
+#include <QTextStream>
+#include <QMessageBox>
+#include <QFileDialog>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -43,8 +48,23 @@ private slots:
 
     void FileClicked(QModelIndex index);
 
+    void on_textEdit_textChanged();
+
 private:
     Ui::MainWindow *ui;
     QFileSystemModel *m_DirsList { new QFileSystemModel(this) };
+
+    bool m_changed;
+    QString m_path;
+
+    void newFile();
+    void openFile();
+    void saveFile(QString path);
+    void saveFileAs();
+    void checkSave();
+
+    // QWidget interface
+protected:
+    void closeEvent(QCloseEvent *event);
 };
 #endif // MAINWINDOW_H

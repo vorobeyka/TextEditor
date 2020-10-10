@@ -3,23 +3,25 @@
 #include <QtCore>
 
 void MainWindow::on_actionNew_triggered() {
-    qDebug() << "new";
+    checkSave();
+    newFile();
 }
 
 void MainWindow::on_actionOpen_triggered() {
-    qDebug() << "open";
+    checkSave();
+    openFile();
 }
 
 void MainWindow::on_actionSave_triggered() {
-    qDebug() << "save";
+    saveFile(m_path);
 }
 
 void MainWindow::on_actionSave_as_triggered() {
-
+    saveFileAs();
 }
 
 void MainWindow::on_actionExit_triggered() {
-
+    close();
 }
 
 void MainWindow::on_actionCopy_triggered() {

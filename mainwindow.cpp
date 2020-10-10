@@ -9,7 +9,9 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    setTreeView("D://");
+    setTreeView("E:\\");
+    m_path = "";
+    newFile();
 }
 
 MainWindow::~MainWindow()
@@ -28,4 +30,12 @@ void MainWindow::setTreeView(QString path) {
     for (int i = 1; i < m_DirsList->columnCount(); ++i)
         ui->treeView->hideColumn(i);
     connect(ui->treeView, SIGNAL(clicked(QModelIndex)), this, SLOT(FileClicked(QModelIndex)));
+}
+
+void MainWindow::on_textEdit_textChanged() {
+    m_changed = true;
+}
+
+void MainWindow::closeEvent(QCloseEvent *event) {
+    event->accept();
 }
