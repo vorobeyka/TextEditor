@@ -2,6 +2,16 @@
 #include "mainwindow.h"
 #include <QtCore>
 
+void MainWindow::on_actionExplorer_triggered() {
+    if (m_isExplorerHide) {
+        ui->treeView->show();
+        m_isExplorerHide = false;
+    } else {
+        ui->treeView->hide();
+        m_isExplorerHide = true;
+    }
+}
+
 void MainWindow::on_actionNew_triggered() {
     checkSave();
     newFile();

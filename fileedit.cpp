@@ -40,6 +40,20 @@ void MainWindow::openFile() {
     m_changed = false;
 }
 
+void MainWindow::on_actionOpenFolder_triggered(){
+    QString path = QFileDialog::getExistingDirectory(this, "Open Folder");
+
+    if (path.isEmpty()) return;
+
+    QDir dir(path);
+    if (!dir.exists()) {
+        QMessageBox::critical(this, "Error", "Error to open folder");
+        return;
+    }
+
+    setTreeView(path);
+}
+
 void MainWindow::saveFile(QString path) {
     if (path.isEmpty()) {
         saveFileAs();

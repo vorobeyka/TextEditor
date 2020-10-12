@@ -53,12 +53,17 @@ private slots:
     void on_actionUndo_triggered();
     void on_actionRedo_triggered();
 
+    void on_actionExplorer_triggered();
+
+    void on_actionOpenFolder_triggered();
+
 private:
     Ui::MainWindow *ui;
     QFileSystemModel *m_DirsList { new QFileSystemModel(this) };
 
     bool m_changed;
-    bool m_openFile;
+    bool m_openFile { false };
+    bool m_isExplorerHide { false };
     QString m_path;
     QModelIndex m_modelIndex;
 
