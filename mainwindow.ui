@@ -80,6 +80,11 @@
             <verstretch>0</verstretch>
            </sizepolicy>
           </property>
+          <property name="font">
+           <font>
+            <pointsize>12</pointsize>
+           </font>
+          </property>
           <property name="acceptDrops">
            <bool>true</bool>
           </property>
@@ -799,8 +804,8 @@
    </property>
    <property name="iconSize">
     <size>
-     <width>16</width>
-     <height>16</height>
+     <width>20</width>
+     <height>20</height>
     </size>
    </property>
    <attribute name="toolBarArea">
@@ -830,7 +835,7 @@
    <addaction name="actionFont"/>
    <addaction name="separator"/>
   </widget>
-  <widget class="QToolBar" name="toolBar_2">
+  <widget class="QToolBar" name="toolBarDirectories">
    <property name="windowTitle">
     <string>toolBar_2</string>
    </property>
@@ -839,8 +844,8 @@
    </property>
    <property name="iconSize">
     <size>
-     <width>20</width>
-     <height>20</height>
+     <width>24</width>
+     <height>24</height>
     </size>
    </property>
    <attribute name="toolBarArea">
@@ -851,6 +856,39 @@
    </attribute>
    <addaction name="actionExplorer"/>
    <addaction name="separator"/>
+  </widget>
+  <widget class="QToolBar" name="toolBarActions">
+   <property name="windowTitle">
+    <string>toolBar_2</string>
+   </property>
+   <property name="movable">
+    <bool>false</bool>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>LeftToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionAdd_file"/>
+   <addaction name="actionAdd_folder"/>
+   <addaction name="actionRename"/>
+   <addaction name="actionDelete"/>
+  </widget>
+  <widget class="QToolBar" name="toolBar_2">
+   <property name="windowTitle">
+    <string>toolBar_2</string>
+   </property>
+   <property name="movable">
+    <bool>false</bool>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionSettings"/>
   </widget>
   <action name="actionNew">
    <property name="icon">
@@ -1042,6 +1080,9 @@
    </property>
   </action>
   <action name="actionBold">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
    <property name="icon">
     <iconset resource="resources.qrc">
      <normaloff>:/files/images/text_bold.png</normaloff>:/files/images/text_bold.png</iconset>
@@ -1051,6 +1092,9 @@
    </property>
   </action>
   <action name="actionItalic">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
    <property name="icon">
     <iconset resource="resources.qrc">
      <normaloff>:/files/images/text_italic.png</normaloff>:/files/images/text_italic.png</iconset>
@@ -1060,6 +1104,9 @@
    </property>
   </action>
   <action name="actionUnderline">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
    <property name="icon">
     <iconset resource="resources.qrc">
      <normaloff>:/files/images/text_underline.png</normaloff>:/files/images/text_underline.png</iconset>
@@ -1069,6 +1116,9 @@
    </property>
   </action>
   <action name="actionStrike">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
    <property name="icon">
     <iconset resource="resources.qrc">
      <normaloff>:/files/images/text_strikethrough.png</normaloff>:/files/images/text_strikethrough.png</iconset>
@@ -1186,6 +1236,78 @@
    </property>
    <property name="shortcut">
     <string>Ctrl+Shift+N</string>
+   </property>
+  </action>
+  <action name="actionAdd_file">
+   <property name="icon">
+    <iconset resource="resources.qrc">
+     <normaloff>:/files/images/add-file.png</normaloff>:/files/images/add-file.png</iconset>
+   </property>
+   <property name="text">
+    <string>Add file</string>
+   </property>
+   <property name="shortcut">
+    <string>Alt+N</string>
+   </property>
+  </action>
+  <action name="actionAdd_folder">
+   <property name="icon">
+    <iconset resource="resources.qrc">
+     <normaloff>:/files/images/add-folder.png</normaloff>:/files/images/add-folder.png</iconset>
+   </property>
+   <property name="text">
+    <string>Add folder</string>
+   </property>
+   <property name="toolTip">
+    <string>Add folder (Alt + Shift + N)</string>
+   </property>
+   <property name="shortcut">
+    <string>Alt+Shift+N</string>
+   </property>
+  </action>
+  <action name="actionRename">
+   <property name="icon">
+    <iconset resource="resources.qrc">
+     <normaloff>:/files/images/rename.png</normaloff>:/files/images/rename.png</iconset>
+   </property>
+   <property name="text">
+    <string>Rename</string>
+   </property>
+   <property name="toolTip">
+    <string>Rename (F2)</string>
+   </property>
+   <property name="shortcut">
+    <string>F2</string>
+   </property>
+  </action>
+  <action name="actionDelete">
+   <property name="icon">
+    <iconset resource="resources.qrc">
+     <normaloff>:/files/images/delete.png</normaloff>:/files/images/delete.png</iconset>
+   </property>
+   <property name="text">
+    <string>Delete</string>
+   </property>
+   <property name="toolTip">
+    <string>Delete (Del)</string>
+   </property>
+   <property name="shortcut">
+    <string>Del</string>
+   </property>
+  </action>
+  <action name="actionSettings">
+   <property name="icon">
+    <iconset resource="resources.qrc">
+     <normaloff>:/files/images/settings.png</normaloff>:/files/images/settings.png</iconset>
+   </property>
+   <property name="text">
+    <string>Settings</string>
+   </property>
+   <property name="toolTip">
+    <string>Settings (Ctrl + P)</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+P</string>
    </property>
   </action>
  </widget>

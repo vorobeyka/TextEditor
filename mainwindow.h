@@ -8,20 +8,19 @@
 #include <QTextStream>
 #include <QMessageBox>
 #include <QFileDialog>
+#include <QColorDialog>
+#include <QFontDialog>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
 
-class MainWindow : public QMainWindow
-{
+class MainWindow : public QMainWindow {
     Q_OBJECT
 
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-    void setTreeView(QString = "");
-    void chooseDir();
 
 private slots:
     void on_actionNew_triggered();
@@ -58,6 +57,12 @@ private slots:
     void on_FindDown_clicked();
     void on_ReplacAll_clicked();
     void on_Replace_clicked();
+    void on_actionAdd_file_triggered();
+    void on_actionAdd_folder_triggered();
+    void on_actionRename_triggered();
+    void on_actionDelete_triggered();
+
+    void on_actionSettings_triggered();
 
 private:
     Ui::MainWindow *ui;
@@ -69,7 +74,11 @@ private:
     QString m_path;
     QString m_fileName = "";
     QModelIndex m_modelIndex;
+    QModelIndex m_dirModel;
+    QModelIndex m_fileModel;
 
+    void setTreeView(QString = "");
+    void chooseDir();
     void newFile();
     void openFile();
     void saveFile(QString path);
@@ -79,7 +88,10 @@ private:
     void showReplace();
     void hideFind();
     void hideReplace();
+    void renameFile();
+    void renameFolder(QDir);
     // QWidget interface
+
 protected:
     void closeEvent(QCloseEvent *event);
 };

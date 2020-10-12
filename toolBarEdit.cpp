@@ -1,15 +1,87 @@
 #include "ui_mainwindow.h"
 #include "mainwindow.h"
 #include <QtCore>
+#include <QInputDialog>
+
+void MainWindow::on_actionSettings_triggered() {
+
+}
 
 void MainWindow::on_actionExplorer_triggered() {
     if (m_isExplorerHide) {
         ui->treeView->show();
+        ui->toolBarActions->show();
         m_isExplorerHide = false;
     } else {
         ui->treeView->hide();
+        ui->toolBarActions->hide();
         m_isExplorerHide = true;
     }
+}
+
+void MainWindow::on_actionAdd_file_triggered() {
+    QString path = m_DirsList->filePath(m_dirModel);
+    if (!QDir(path).exists()) return;
+
+    QString fileName = QInputDialog::getText(this, "Input text", "File name: ");
+    QFile file(path + "/" + fileName);
+    if (file.open(QFile::ReadWrite | QFile::Text)) file.close();
+}
+
+void MainWindow::on_actionAdd_folder_triggered() {
+    QString path = m_DirsList->filePath(m_dirModel) + "/";
+    if (!QDir(path).exists()) return;
+
+    QString dirName = QInputDialog::getText(this, "Input text", "Folder name: ");
+    QDir dir(path);
+    dir.mkdir(dirName);
+}
+
+void MainWindow::renameFile() {
+    QFile file(m_DirsList->filePath(m_fileModel));
+    if (!file.exists()) return;
+
+    QString newName = QInputDialog::getText(this, "Rename", "New name: ");
+    if (newName.isEmpty()) {
+        file.close();
+        return;
+    }
+
+    QString path = m_DirsList->filePath(m_dirModel) + "/";
+    file.rename(path + newName);
+    file.close();
+}
+
+void MainWindow::renameFolder(QDir dir) {
+    QString newName = QInputDialog::getText(this, "Rename", "New name: ");
+    if (newName.isEmpty()) return;
+
+    QString path = m_DirsList->filePath(m_fileModel.parent()) + "/";
+    dir.rename(dir.path(), path + newName);
+}
+
+void MainWindow::on_actionRename_triggered() {
+    QDir dir(m_DirsList->filePath(m_fileModel));
+    if (dir.exists()) renameFolder(dir);
+    else renameFile();
+    m_fileModel = m_DirsList->index(m_DirsList->rootPath());
+    m_dirModel = m_DirsList->index(m_DirsList->rootPath());
+}
+
+void MainWindow::on_actionDelete_triggered() {
+    QString path = m_DirsList->filePath(m_fileModel);
+    QMessageBox msgBox;
+    msgBox.setText("You wanna delete " + path + " ?");
+    msgBox.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
+    msgBox.setDefaultButton(QMessageBox::Yes);
+    if (msgBox.exec() == QMessageBox::No) return;
+
+    QFile file(path);
+    QFileInfo fInfo(path);
+    if (fInfo.isFile()) file.remove();
+    else if (fInfo.isDir()) QDir(path).removeRecursively();
+    m_fileModel = m_DirsList->index(m_DirsList->rootPath());
+    m_dirModel = m_DirsList->index(m_DirsList->rootPath());
 }
 
 void MainWindow::on_actionNew_triggered() {
@@ -76,27 +148,47 @@ void MainWindow::on_actionZoom_out_triggered() {
 }
 
 void MainWindow::on_actionBold_triggered() {
-    ui->textEdit->font().bold();
+    QFont font = ui->textEdit->currentFont();
+    font.bold() ? font.setBold(false) : font.setBold(true);
+    ui->textEdit->setCurrentFont(font);
+    m_changed = true;
 }
 
 void MainWindow::on_actionItalic_triggered() {
-
+    QFont font = ui->textEdit->currentFont();
+    font.italic() ? font.setItalic(false) : font.setItalic(true);
+    ui->textEdit->setCurrentFont(font);
+    m_changed = true;
 }
 
 void MainWindow::on_actionUnderline_triggered() {
-
+    QFont font = ui->textEdit->currentFont();
+    font.underline() ? font.setUnderline(false) : font.setUnderline(true);
+    ui->textEdit->setCurrentFont(font);
+    m_changed = true;
 }
 
 void MainWindow::on_actionStrike_triggered() {
-
+    QFont font = ui->textEdit->currentFont();
+    font.strikeOut() ? font.setStrikeOut(false) : font.setStrikeOut(true);
+    ui->textEdit->setCurrentFont(font);
+    m_changed = true;
 }
 
 void MainWindow::on_actionColor_triggered() {
-
+    QColor current = ui->textEdit->currentCharFormat().foreground().color();
+    QColor color = QColorDialog::getColor(current, this, "Color selector");
+    ui->textEdit->setTextColor(color);
+    m_changed = true;
 }
 
 void MainWindow::on_actionFont_triggered() {
+    bool ok;
+    QFont font = QFontDialog::getFont(&ok, ui->textEdit->currentFont(), this, "Choose a font");
+    if (!ok) return;
 
+    ui->textEdit->setCurrentFont(font);
+    m_changed = true;
 }
 
 void MainWindow::on_actionHelp_triggered() {

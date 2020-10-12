@@ -3,10 +3,14 @@
 #include <QtCore>
 
 void MainWindow::FileClicked(QModelIndex index) {
-    qDebug() << "clicked - " << m_DirsList->filePath(index);
+    if (QDir(m_DirsList->filePath(index)).exists()) m_dirModel = index;
+    else m_dirModel = index.parent();
+    m_fileModel = index;
 }
 
 void MainWindow::FileDoubleClicked(QModelIndex index) {
+    if (QDir(m_DirsList->filePath(index)).exists()) return;
+
     m_openFile = true;
     m_modelIndex = index;
     openFile();
@@ -24,7 +28,8 @@ void MainWindow::newFile() {
 
 void MainWindow::openFile() {
     QString path = m_openFile ?
-                m_DirsList->filePath(m_modelIndex) : QFileDialog::getOpenFileName(this, "Open File");
+                m_DirsList->filePath(m_modelIndex) :
+                QFileDialog::getOpenFileName(this, "Open File");
     if (path.isEmpty()) return;
 
     QFile file(path);
@@ -72,7 +77,7 @@ void MainWindow::saveFile(QString path) {
     }
 
     QTextStream stream(&file);
-    stream << ui->textEdit->toPlainText();
+    stream << ui->textEdit->toHtml();
     file.close();
 
     m_path = path;

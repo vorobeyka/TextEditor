@@ -3,11 +3,13 @@
 #include <QtCore>
 #include <QStringList>
 #include <QDir>
+#include <QInputDialog>
 
 MainWindow::MainWindow(QWidget *parent)
-    : QMainWindow(parent) , ui(new Ui::MainWindow) {
+    : QMainWindow(parent), ui(new Ui::MainWindow) {
     ui->setupUi(this);
     this->setWindowTitle("uText");
+    this->setWindowIcon(QIcon(":/files/images/writing.png"));
     setTreeView(QDir::homePath());
     m_path = "";
 
@@ -25,6 +27,7 @@ void MainWindow::setTreeView(QString path) {
 
     ui->FileName->setText("Untittled");
     m_DirsList->setRootPath(path);
+    m_dirModel = m_DirsList->index(path);
     ui->treeView->setModel(m_DirsList);
     ui->treeView->setRootIndex(m_DirsList->index(path));
     for (int i = 1; i < m_DirsList->columnCount(); ++i)
@@ -112,6 +115,7 @@ void MainWindow::on_ReplacAll_clicked() {
     QString text = ui->textEdit->toPlainText();
     text = text.replace(foundText, ui->ReplaceLine->text());
     ui->textEdit->setText(text);
+    m_changed = true;
 }
 
 void MainWindow::on_Replace_clicked() {
@@ -123,4 +127,5 @@ void MainWindow::on_Replace_clicked() {
 
     QTextCursor cursor = ui->textEdit->textCursor();
     cursor.insertText(ui->ReplaceLine->text());
+    m_changed = true;
 }
