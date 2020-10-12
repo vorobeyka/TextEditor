@@ -190,11 +190,3 @@ void MainWindow::on_actionFont_triggered() {
     ui->textEdit->setCurrentFont(font);
     m_changed = true;
 }
-
-void MainWindow::on_actionHelp_triggered() {
-
-}
-
-void MainWindow::on_actionAbout_triggered() {
-
-}

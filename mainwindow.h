@@ -42,8 +42,6 @@ private slots:
     void on_actionStrike_triggered();
     void on_actionColor_triggered();
     void on_actionFont_triggered();
-    void on_actionHelp_triggered();
-    void on_actionAbout_triggered();
     void FileClicked(QModelIndex index);
     void FileDoubleClicked(QModelIndex index);
     void on_textEdit_textChanged();
@@ -61,7 +59,6 @@ private slots:
     void on_actionAdd_folder_triggered();
     void on_actionRename_triggered();
     void on_actionDelete_triggered();
-
     void on_actionSettings_triggered();
 
 private:

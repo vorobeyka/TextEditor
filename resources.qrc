@@ -1,6 +1,5 @@
 <RCC>
     <qresource prefix="/files">
-        <file>images/about.png</file>
         <file>images/arrow_redo.png</file>
         <file>images/arrow_undo.png</file>
         <file>images/cancel.png</file>
@@ -9,7 +8,6 @@
         <file>images/cut.png</file>
         <file>images/find.png</file>
         <file>images/font.png</file>
-        <file>images/help.png</file>
         <file>images/new.png</file>
         <file>images/open.png</file>
         <file>images/paste.png</file>

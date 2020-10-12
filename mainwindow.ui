@@ -315,13 +315,6 @@
     <addaction name="actionColor"/>
     <addaction name="actionFont"/>
    </widget>
-   <widget class="QMenu" name="menuAbout">
-    <property name="title">
-     <string>About</string>
-    </property>
-    <addaction name="actionHelp"/>
-    <addaction name="actionAbout"/>
-   </widget>
    <widget class="QMenu" name="menuView">
     <property name="title">
      <string>View</string>
@@ -349,7 +342,6 @@
    <addaction name="menuEdit"/>
    <addaction name="menuView"/>
    <addaction name="menuText"/>
-   <addaction name="menuAbout"/>
   </widget>
   <widget class="QStatusBar" name="statusbar">
    <property name="palette">
@@ -1090,6 +1082,12 @@
    <property name="text">
     <string>Bold</string>
    </property>
+   <property name="toolTip">
+    <string>Bold (Ctrl + Shift + B)</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+B</string>
+   </property>
   </action>
   <action name="actionItalic">
    <property name="checkable">
@@ -1101,6 +1099,12 @@
    </property>
    <property name="text">
     <string>Italic</string>
+   </property>
+   <property name="toolTip">
+    <string>Italic (Ctrl + Shift + I)</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+I</string>
    </property>
   </action>
   <action name="actionUnderline">
@@ -1114,6 +1118,12 @@
    <property name="text">
     <string>Underline</string>
    </property>
+   <property name="toolTip">
+    <string>Underline (Ctrl + Shift + U)</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+U</string>
+   </property>
   </action>
   <action name="actionStrike">
    <property name="checkable">
@@ -1126,6 +1136,12 @@
    <property name="text">
     <string>Strike</string>
    </property>
+   <property name="toolTip">
+    <string>Strike (Alt + S)</string>
+   </property>
+   <property name="shortcut">
+    <string>Alt+S</string>
+   </property>
   </action>
   <action name="actionColor">
    <property name="icon">
@@ -1134,6 +1150,12 @@
    </property>
    <property name="text">
     <string>Color</string>
+   </property>
+   <property name="toolTip">
+    <string>Color (Alt + C)</string>
+   </property>
+   <property name="shortcut">
+    <string>Alt+C</string>
    </property>
   </action>
   <action name="actionFont">
@@ -1144,23 +1166,11 @@
    <property name="text">
     <string>Font</string>
    </property>
-  </action>
-  <action name="actionHelp">
-   <property name="icon">
-    <iconset resource="resources.qrc">
-     <normaloff>:/files/images/help.png</normaloff>:/files/images/help.png</iconset>
+   <property name="toolTip">
+    <string>Font (Alt + F)</string>
    </property>
-   <property name="text">
-    <string>Help</string>
-   </property>
-  </action>
-  <action name="actionAbout">
-   <property name="icon">
-    <iconset resource="resources.qrc">
-     <normaloff>:/files/images/about.png</normaloff>:/files/images/about.png</iconset>
-   </property>
-   <property name="text">
-    <string>About</string>
+   <property name="shortcut">
+    <string>Alt+F</string>
    </property>
   </action>
   <action name="actionUndo">
