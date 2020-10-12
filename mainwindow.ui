@@ -40,7 +40,7 @@
      <widget class="QLabel" name="DirName">
       <property name="font">
        <font>
-        <pointsize>15</pointsize>
+        <pointsize>12</pointsize>
        </font>
       </property>
       <property name="text">

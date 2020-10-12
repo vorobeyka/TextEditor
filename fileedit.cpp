@@ -3,9 +3,14 @@
 #include <QtCore>
 
 void MainWindow::FileClicked(QModelIndex index) {
-    qDebug() << index.column();
-//    qDebug() << dynamic_cast<QString>(index.data());
-    qDebug() << index.data().toString();
+    qDebug() << "clicked - " << m_DirsList->filePath(index);
+}
+
+void MainWindow::FileDoubleClicked(QModelIndex index) {
+    m_openFile = true;
+    m_modelIndex = index;
+    openFile();
+    m_openFile = false;
 }
 
 void MainWindow::newFile() {
@@ -16,11 +21,12 @@ void MainWindow::newFile() {
 }
 
 void MainWindow::openFile() {
-    QString path = QFileDialog::getOpenFileName(this, "Open File");
+    QString path = m_openFile ?
+                m_DirsList->filePath(m_modelIndex) : QFileDialog::getOpenFileName(this, "Open File");
     if (path.isEmpty()) return;
 
     QFile file(path);
-    if (!file.open(QIODevice::ReadOnly)) {
+    if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
         QMessageBox::critical(this, "Error", file.errorString());
         return;
     }

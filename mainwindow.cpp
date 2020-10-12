@@ -29,7 +29,9 @@ void MainWindow::setTreeView(QString path) {
     ui->treeView->setRootIndex(m_DirsList->index(path));
     for (int i = 1; i < m_DirsList->columnCount(); ++i)
         ui->treeView->hideColumn(i);
+
     connect(ui->treeView, SIGNAL(clicked(QModelIndex)), this, SLOT(FileClicked(QModelIndex)));
+    connect(ui->treeView, SIGNAL(doubleClicked(QModelIndex)), this, SLOT(FileDoubleClicked(QModelIndex)));
 }
 
 void MainWindow::on_textEdit_textChanged() {

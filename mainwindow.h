@@ -48,6 +48,7 @@ private slots:
     void on_actionHelp_triggered();
     void on_actionAbout_triggered();
     void FileClicked(QModelIndex index);
+    void FileDoubleClicked(QModelIndex index);
     void on_textEdit_textChanged();
     void on_actionUndo_triggered();
     void on_actionRedo_triggered();
@@ -57,7 +58,9 @@ private:
     QFileSystemModel *m_DirsList { new QFileSystemModel(this) };
 
     bool m_changed;
+    bool m_openFile;
     QString m_path;
+    QModelIndex m_modelIndex;
 
     void newFile();
     void openFile();
