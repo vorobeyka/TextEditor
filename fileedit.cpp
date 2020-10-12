@@ -16,6 +16,8 @@ void MainWindow::FileDoubleClicked(QModelIndex index) {
 void MainWindow::newFile() {
     ui->textEdit->clear();
     ui->statusbar->showMessage("New File");
+    ui->FileName->setText("Untittled");
+    m_fileName = "Untittled";
     m_path = "";
     m_changed = false;
 }
@@ -33,6 +35,8 @@ void MainWindow::openFile() {
 
     QTextStream stream(&file);
     ui->textEdit->setText(stream.readAll());
+    m_fileName = path.split("/").back();
+    ui->FileName->setText(m_fileName);
     file.close();
 
     m_path = path;
@@ -42,7 +46,6 @@ void MainWindow::openFile() {
 
 void MainWindow::on_actionOpenFolder_triggered(){
     QString path = QFileDialog::getExistingDirectory(this, "Open Folder");
-
     if (path.isEmpty()) return;
 
     QDir dir(path);
@@ -75,6 +78,8 @@ void MainWindow::saveFile(QString path) {
     m_path = path;
     ui->statusbar->showMessage(m_path);
     m_changed = false;
+
+    ui->FileName->setText(m_fileName);
 }
 
 void MainWindow::saveFileAs() {

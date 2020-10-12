@@ -57,6 +57,8 @@ private slots:
 
     void on_actionOpenFolder_triggered();
 
+    void on_actionNew_window_triggered();
+
 private:
     Ui::MainWindow *ui;
     QFileSystemModel *m_DirsList { new QFileSystemModel(this) };
@@ -65,6 +67,7 @@ private:
     bool m_openFile { false };
     bool m_isExplorerHide { false };
     QString m_path;
+    QString m_fileName = "";
     QModelIndex m_modelIndex;
 
     void newFile();

@@ -5,10 +5,9 @@
 #include <QDir>
 
 MainWindow::MainWindow(QWidget *parent)
-    : QMainWindow(parent)
-    , ui(new Ui::MainWindow)
-{
+    : QMainWindow(parent) , ui(new Ui::MainWindow) {
     ui->setupUi(this);
+    this->setWindowTitle("uText");
     setTreeView(QDir::homePath());
     m_path = "";
     newFile();
@@ -22,8 +21,7 @@ MainWindow::~MainWindow()
 void MainWindow::setTreeView(QString path) {
     QStringList splitList = path.split("/");
 
-    ui->DirName->setText(path != QDir::rootPath() ?
-                splitList.at(splitList.size() - 1) : path);
+    ui->FileName->setText("Untittled");
     m_DirsList->setRootPath(path);
     ui->treeView->setModel(m_DirsList);
     ui->treeView->setRootIndex(m_DirsList->index(path));
@@ -35,11 +33,17 @@ void MainWindow::setTreeView(QString path) {
 }
 
 void MainWindow::on_textEdit_textChanged() {
+    if (!m_changed) ui->FileName->setText(ui->FileName->text() + "*");
     m_changed = true;
 }
 
 void MainWindow::closeEvent(QCloseEvent *event) {
+    if (m_changed) checkSave();
+
     event->accept();
 }
 
-
+void MainWindow::on_actionNew_window_triggered() {
+    MainWindow* newWindow = new MainWindow();
+    newWindow->show();
+}

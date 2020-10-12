@@ -24,5 +24,7 @@
         <file>images/zoom_in.png</file>
         <file>images/zoom_out.png</file>
         <file>images/explorer.png</file>
+        <file>images/add-file.png</file>
+        <file>images/add-folder.png</file>
     </qresource>
 </RCC>

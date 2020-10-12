@@ -9,8 +9,7 @@ FindDialog::FindDialog(QString selectedText, QWidget *parent) :
     save();
 }
 
-FindDialog::~FindDialog()
-{
+FindDialog::~FindDialog() {
     delete ui;
 }
 
