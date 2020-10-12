@@ -4,6 +4,8 @@
 
 void MainWindow::FileClicked(QModelIndex index) {
     qDebug() << index.column();
+//    qDebug() << dynamic_cast<QString>(index.data());
+    qDebug() << index.data().toString();
 }
 
 void MainWindow::newFile() {

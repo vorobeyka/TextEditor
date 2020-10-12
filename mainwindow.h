@@ -8,6 +8,8 @@
 #include <QTextStream>
 #include <QMessageBox>
 #include <QFileDialog>
+#include "finddialog.h"
+#include "replacedialog.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -45,10 +47,10 @@ private slots:
     void on_actionFont_triggered();
     void on_actionHelp_triggered();
     void on_actionAbout_triggered();
-
     void FileClicked(QModelIndex index);
-
     void on_textEdit_textChanged();
+    void on_actionUndo_triggered();
+    void on_actionRedo_triggered();
 
 private:
     Ui::MainWindow *ui;

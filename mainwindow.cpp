@@ -9,7 +9,7 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    setTreeView("E:\\");
+    setTreeView(QDir::homePath());
     m_path = "";
     newFile();
 }
@@ -39,3 +39,5 @@ void MainWindow::on_textEdit_textChanged() {
 void MainWindow::closeEvent(QCloseEvent *event) {
     event->accept();
 }
+
+
