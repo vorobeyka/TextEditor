@@ -47,35 +47,12 @@ void MainWindow::on_actionPaste_triggered() {
 }
 
 void MainWindow::on_actionFind_triggered() {
-    FindDialog* dlg = new FindDialog(ui->textEdit->textCursor().selectedText(), this);
-    if (!dlg->exec()) return;
-
-    QTextDocument::FindFlags flags;
-    if (dlg->caseSensitive()) flags = flags | QTextDocument::FindFlag::FindCaseSensitively;
-    if (dlg->wholeWords()) flags = flags | QTextDocument::FindFlag::FindWholeWords;
-    if (dlg->backwards()) flags = flags | QTextDocument::FindFlag::FindBackward;
-
-    bool value = ui->textEdit->find(dlg->text(), flags);
-    if (!value) QMessageBox::information(this, "Not found", "Not found: " + dlg->text());
+    showFind();
 }
 
 void MainWindow::on_actionReplace_triggered() {
-    ReplaceDialog* dlg = new ReplaceDialog(ui->textEdit->textCursor().selectedText(), this);
-    if (!dlg->exec()) return;
-
-    if (dlg->all()) {
-        QString text = ui->textEdit->toPlainText();
-        text = text.replace(dlg->text(), dlg->replaceText());
-        ui->textEdit->setText(text);
-    } else {
-        bool value = ui->textEdit->find(dlg->text());
-        if (!value) {
-            QMessageBox::information(this, "Not found", "Not found: " + dlg->text());
-            return;
-        }
-        QTextCursor cursor = ui->textEdit->textCursor();
-        cursor.insertText(dlg->replaceText());
-    }
+    showFind();
+    showReplace();
 }
 
 void MainWindow::on_actionUndo_triggered() {
@@ -91,11 +68,11 @@ void MainWindow::on_actionSelect_All_triggered() {
 }
 
 void MainWindow::on_actionZoom_in_triggered() {
-    ui->textEdit->zoomIn(5);
+    ui->textEdit->zoomIn(2);
 }
 
 void MainWindow::on_actionZoom_out_triggered() {
-    ui->textEdit->zoomOut(5);
+    ui->textEdit->zoomOut(2);
 }
 
 void MainWindow::on_actionBold_triggered() {

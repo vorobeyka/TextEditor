@@ -10,11 +10,13 @@ MainWindow::MainWindow(QWidget *parent)
     this->setWindowTitle("uText");
     setTreeView(QDir::homePath());
     m_path = "";
+
+    hideFind();
+    hideReplace();
     newFile();
 }
 
-MainWindow::~MainWindow()
-{
+MainWindow::~MainWindow() {
     delete ui;
 }
 
@@ -46,4 +48,79 @@ void MainWindow::closeEvent(QCloseEvent *event) {
 void MainWindow::on_actionNew_window_triggered() {
     MainWindow* newWindow = new MainWindow();
     newWindow->show();
+}
+
+void MainWindow::showFind() {
+    ui->FindDown->show();
+    ui->FindUp->show();
+    ui->FindLabel->show();
+    ui->FindLine->show();
+    ui->CloseFindLine->show();
+    ui->FindLine->setText(ui->textEdit->textCursor().selectedText());
+    ui->FindLine->setFocus();
+}
+
+void MainWindow::showReplace() {
+    ui->ReplacAll->show();
+    ui->Replace->show();
+    ui->ReplaceLabel->show();
+    ui->ReplaceLine->show();
+}
+
+void MainWindow::hideFind() {
+    ui->FindDown->hide();
+    ui->FindUp->hide();
+    ui->FindLabel->hide();
+    ui->FindLine->hide();
+    ui->CloseFindLine->hide();
+}
+
+void MainWindow::hideReplace() {
+    ui->ReplacAll->hide();
+    ui->Replace->hide();
+    ui->ReplaceLabel->hide();
+    ui->ReplaceLine->hide();
+}
+
+void MainWindow::on_CloseFindLine_clicked() {
+    hideFind();
+    hideReplace();
+}
+
+void MainWindow::on_FindUp_clicked() {
+    QString foundText = ui->FindLine->text();
+    if (foundText.isEmpty()) return;
+
+    bool value = ui->textEdit->find(foundText, QTextDocument::FindFlags() | QTextDocument::FindFlag::FindBackward);
+    if (!value) QMessageBox::information(this, "Not found", "Not found: " + foundText);
+    else ui->textEdit->setFocus();
+}
+
+void MainWindow::on_FindDown_clicked() {
+    QString foundText = ui->FindLine->text();
+    if (foundText.isEmpty()) return;
+
+    bool value = ui->textEdit->find(foundText, QTextDocument::FindFlags());
+    if (!value) QMessageBox::information(this, "Not found", "Not found: " + foundText);
+    else ui->textEdit->setFocus();
+}
+
+void MainWindow::on_ReplacAll_clicked() {
+    QString foundText = ui->FindLine->text();
+    if (foundText.isEmpty()) return;
+
+    QString text = ui->textEdit->toPlainText();
+    text = text.replace(foundText, ui->ReplaceLine->text());
+    ui->textEdit->setText(text);
+}
+
+void MainWindow::on_Replace_clicked() {
+    QString foundText = ui->FindLine->text();
+    if (foundText.isEmpty()) return;
+
+    bool value = ui->textEdit->find(foundText);
+    if (!value) return;
+
+    QTextCursor cursor = ui->textEdit->textCursor();
+    cursor.insertText(ui->ReplaceLine->text());
 }

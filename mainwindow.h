@@ -8,8 +8,6 @@
 #include <QTextStream>
 #include <QMessageBox>
 #include <QFileDialog>
-#include "finddialog.h"
-#include "replacedialog.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -52,12 +50,14 @@ private slots:
     void on_textEdit_textChanged();
     void on_actionUndo_triggered();
     void on_actionRedo_triggered();
-
     void on_actionExplorer_triggered();
-
     void on_actionOpenFolder_triggered();
-
     void on_actionNew_window_triggered();
+    void on_CloseFindLine_clicked();
+    void on_FindUp_clicked();
+    void on_FindDown_clicked();
+    void on_ReplacAll_clicked();
+    void on_Replace_clicked();
 
 private:
     Ui::MainWindow *ui;
@@ -75,7 +75,10 @@ private:
     void saveFile(QString path);
     void saveFileAs();
     void checkSave();
-
+    void showFind();
+    void showReplace();
+    void hideFind();
+    void hideReplace();
     // QWidget interface
 protected:
     void closeEvent(QCloseEvent *event);

@@ -35,12 +35,6 @@ if(ANDROID)
     toolBarEdit.cpp
     mainwindow.h
     mainwindow.ui
-    finddialog.ui
-    finddialog.h
-    finddialog.cpp
-    replacedialog.cpp
-    replacedialog.h
-    replacedialog.ui
     resources.qrc
   )
 else()
@@ -51,12 +45,6 @@ else()
     toolBarEdit.cpp
     mainwindow.h
     mainwindow.ui
-    finddialog.ui
-    finddialog.h
-    finddialog.cpp
-    replacedialog.cpp
-    replacedialog.h
-    replacedialog.ui
     resources.qrc
   )
 endif()

@@ -26,5 +26,6 @@
         <file>images/explorer.png</file>
         <file>images/add-file.png</file>
         <file>images/add-folder.png</file>
+        <file>images/close-icon.png</file>
     </qresource>
 </RCC>
