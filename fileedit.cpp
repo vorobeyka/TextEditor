@@ -77,7 +77,7 @@ void MainWindow::saveFile(QString path) {
     }
 
     QTextStream stream(&file);
-    if (path.split(".").back() == ".utxt")
+    if (path.split(".").back() == "utxt")
         stream << ui->textEdit->toHtml();
     else
         stream << ui->textEdit->toPlainText();
@@ -91,7 +91,7 @@ void MainWindow::saveFile(QString path) {
 }
 
 void MainWindow::saveFileAs() {
-    QString path = QFileDialog::getSaveFileName(this, "Save file", ui->FileName->text(), "UText format (*.utxt);;All Files (*)");
+    QString path = QFileDialog::getSaveFileName(this, "Save file", m_fileName, "UText format (*.utxt);;All Files (*)");
     if (path.isEmpty()) return;
     saveFile(path);
 }
