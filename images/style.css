@@ -1,6 +1,6 @@
 QMenuBar, QLabel, QTreeView, QDialog, QPushButton, QLineEdit, QMenu {
     background-color: #474747;
-    color: #16a085;
+    color: #2ecc71;
 }
 
 QTextEdit {
@@ -9,9 +9,9 @@ QTextEdit {
 }
 
 QToolBar {
-    background-color: #16a085;
+    background-color: #2ecc71;
 }
 
 QLineEdit {
-    border: 1px solid #16a085;
+    border: 1px solid #2ecc71;
 }
