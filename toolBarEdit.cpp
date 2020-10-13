@@ -49,7 +49,13 @@ void MainWindow::renameFile() {
 
     QString path = m_DirsList->filePath(m_dirModel) + "/";
     file.rename(path + newName);
+    if (m_fileModel == m_modelIndex) {
+        m_path = path + newName;
+        m_fileName = newName;
+        ui->FileName->setText(newName);
+    }
     file.close();
+    registerFileType();
 }
 
 void MainWindow::renameFolder(QDir dir) {

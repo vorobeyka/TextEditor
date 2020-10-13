@@ -28,7 +28,6 @@
         <file>images/delete.png</file>
         <file>images/rename.png</file>
         <file>images/writing.png</file>
-        <file>images/settings.png</file>
         <file>images/style.css</file>
     </qresource>
 </RCC>

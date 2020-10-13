@@ -10,6 +10,9 @@
 #include <QFileDialog>
 #include <QColorDialog>
 #include <QFontDialog>
+#include <QTextEdit>
+
+#include "cplusplushighlighter.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -65,15 +68,26 @@ private:
     Ui::MainWindow *ui;
     QFileSystemModel *m_DirsList { new QFileSystemModel(this) };
 
+    enum class FileType {
+        CPP,
+        UTEXT,
+        NONE
+    };
+
+    FileType m_fileType = FileType::NONE;
     bool m_changed;
     bool m_openFile { false };
     bool m_isExplorerHide { false };
     QString m_path;
     QString m_fileName = "";
+    QFont m_defaultFont;
     QModelIndex m_modelIndex;
     QModelIndex m_dirModel;
     QModelIndex m_fileModel;
+    CPlusPlusHighLighter* m_cppHighLighter;
 
+    void registerFileType();
+    void setUpEditor();
     void setTreeView(QString = "");
     void chooseDir();
     void newFile();

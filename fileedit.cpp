@@ -11,6 +11,7 @@ void MainWindow::FileClicked(QModelIndex index) {
 void MainWindow::FileDoubleClicked(QModelIndex index) {
     if (QDir(m_DirsList->filePath(index)).exists()) return;
 
+    checkSave();
     m_openFile = true;
     m_modelIndex = index;
     openFile();
@@ -19,11 +20,12 @@ void MainWindow::FileDoubleClicked(QModelIndex index) {
 
 void MainWindow::newFile() {
     ui->textEdit->clear();
-    ui->statusbar->showMessage("New File");
+//    ui->statusbar->showMessage("New File");
     ui->FileName->setText("Untittled");
     m_fileName = "Untittled";
     m_path = "";
     m_changed = false;
+    registerFileType();
 }
 
 void MainWindow::openFile() {
@@ -45,8 +47,9 @@ void MainWindow::openFile() {
     file.close();
 
     m_path = path;
-    ui->statusbar->showMessage(m_path);
+//    ui->statusbar->showMessage(m_path);
     m_changed = false;
+    registerFileType();
 }
 
 void MainWindow::on_actionOpenFolder_triggered(){
@@ -71,23 +74,25 @@ void MainWindow::saveFile(QString path) {
     QFile file(path);
     if (!file.open(QIODevice::WriteOnly)) {
         QMessageBox::critical(this, "Error", file.errorString());
-        ui->statusbar->showMessage("Error could not save file!");
+//        ui->statusbar->showMessage("Error could not save file!");
         saveFileAs();
         return;
     }
 
     QTextStream stream(&file);
-    if (path.split(".").back() == "utxt")
+    QStringList suffix = path.split(".");
+    if (suffix.size() > 1 && suffix.back() == "utxt")
         stream << ui->textEdit->toHtml();
     else
         stream << ui->textEdit->toPlainText();
     file.close();
 
     m_path = path;
-    ui->statusbar->showMessage(m_path);
+//    ui->statusbar->showMessage(m_path);
     m_changed = false;
 
     ui->FileName->setText(m_fileName);
+    registerFileType();
 }
 
 void MainWindow::saveFileAs() {

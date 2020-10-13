@@ -35,6 +35,8 @@ if(ANDROID)
     toolBarEdit.cpp
     mainwindow.h
     mainwindow.ui
+    cplusplushighlighter.cpp
+    cplusplushighlighter.h
     resources.qrc
   )
 else()
@@ -45,6 +47,8 @@ else()
     toolBarEdit.cpp
     mainwindow.h
     mainwindow.ui
+    cplusplushighlighter.cpp
+    cplusplushighlighter.h
     resources.qrc
   )
 endif()

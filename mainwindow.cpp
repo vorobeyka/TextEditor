@@ -12,6 +12,7 @@ MainWindow::MainWindow(QWidget *parent)
     this->setWindowIcon(QIcon(":/files/images/writing.png"));
     setTreeView(QDir::homePath());
     m_path = "";
+    m_defaultFont = ui->textEdit->currentFont();
 
     hideFind();
     hideReplace();
@@ -20,6 +21,36 @@ MainWindow::MainWindow(QWidget *parent)
 
 MainWindow::~MainWindow() {
     delete ui;
+}
+
+void MainWindow::registerFileType() {
+    if (m_fileName.split(".").size() < 2) {
+        m_fileType = FileType::NONE;
+        setUpEditor();
+        return;
+    }
+
+    QString suffix = m_fileName.split(".").back();
+    if (suffix == "utxt") m_fileType = FileType::UTEXT;
+    else if (suffix == "cpp" || suffix == 'h') m_fileType = FileType::CPP;
+    else m_fileType = FileType::NONE;
+
+    setUpEditor();
+}
+
+void MainWindow::setUpEditor() {
+    switch (m_fileType) {
+    case FileType::CPP:
+        m_cppHighLighter = new CPlusPlusHighLighter(ui->textEdit->document());
+    break;
+    default:
+        foreach(QSyntaxHighlighter* highlighter,
+                ui->textEdit->findChildren<QSyntaxHighlighter*>()) {
+            delete highlighter;
+        }
+    break;
+    }
+    ui->textEdit->setCurrentFont(m_defaultFont);
 }
 
 void MainWindow::setTreeView(QString path) {
