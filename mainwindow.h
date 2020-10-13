@@ -62,7 +62,6 @@ private slots:
     void on_actionAdd_folder_triggered();
     void on_actionRename_triggered();
     void on_actionDelete_triggered();
-    void on_actionSettings_triggered();
 
 private:
     Ui::MainWindow *ui;

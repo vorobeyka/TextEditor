@@ -1,44 +1,17 @@
-/* QMainWindow {
-    background-color: #303952
-} */
-/* QTextEdit {
-    background-color: green;
-} */
-/* QToolBar { */
-    /* background-color: blue; */
-/* } */
-/* QToolBar {
-    background-color: #fff
-} */
+QMenuBar, QLabel, QTreeView, QDialog, QPushButton, QLineEdit, QMenu {
+    background-color: #474747;
+    color: #16a085;
+}
 
-/* QMenuBar { */
-    /* background-color: #303952 */
-/* } */
-QMainWindow {
-    background-color: #485460;
-    color: #1abc9c
+QTextEdit {
+    background-color: #474747;
+    color: #ecf0f1;
 }
 
 QToolBar {
-    background-color: #485460;
+    background-color: #16a085;
 }
 
-QTextEdit {
-    background-color: #485460;
-    color: yellow;
-}
-
-QAction {
-    background-color: #485460;
-}
-
-QMenuBar {
-    color: #1abc9c
-}
-
-QTextEdit {
-    background-color: #485460;
-    /* background-color: #3d3d3d; */
-    /* color: #7f8c8d; */
-    color: #ecf0f1
+QLineEdit {
+    border: 1px solid #16a085;
 }

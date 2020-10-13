@@ -3,10 +3,6 @@
 #include <QtCore>
 #include <QInputDialog>
 
-void MainWindow::on_actionSettings_triggered() {
-
-}
-
 void MainWindow::on_actionExplorer_triggered() {
     if (m_isExplorerHide) {
         ui->treeView->show();
