@@ -1,11 +1,44 @@
-QMainWindow {
+/* QMainWindow {
     background-color: #303952
+} */
+/* QTextEdit {
+    background-color: green;
+} */
+/* QToolBar { */
+    /* background-color: blue; */
+/* } */
+/* QToolBar {
+    background-color: #fff
+} */
+
+/* QMenuBar { */
+    /* background-color: #303952 */
+/* } */
+QMainWindow {
+    background-color: #485460;
+    color: #1abc9c
 }
 
 QToolBar {
-    background-color: #1abc9c
+    background-color: #485460;
+}
+
+QTextEdit {
+    background-color: #485460;
+    color: yellow;
+}
+
+QAction {
+    background-color: #485460;
 }
 
 QMenuBar {
-    background-color: #303952
+    color: #1abc9c
+}
+
+QTextEdit {
+    background-color: #485460;
+    /* background-color: #3d3d3d; */
+    /* color: #7f8c8d; */
+    color: #ecf0f1
 }

@@ -31,10 +31,13 @@ void MainWindow::registerFileType() {
     }
 
     QString suffix = m_fileName.split(".").back();
-    if (suffix == "utxt") m_fileType = FileType::UTEXT;
-    else if (suffix == "cpp" || suffix == 'h') m_fileType = FileType::CPP;
-    else m_fileType = FileType::NONE;
-
+    if (suffix == "utxt") {
+        m_fileType = FileType::UTEXT;
+    } else if (suffix == "cpp" || suffix == "h" || suffix == "c") {
+        m_fileType = FileType::CPP;
+    } else {
+        m_fileType = FileType::NONE;
+    }
     setUpEditor();
 }
 
