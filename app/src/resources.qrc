@@ -1,0 +1,34 @@
+<RCC>
+    <qresource prefix="/files">
+        <file alias="images/arrow_redo.png">../resources/arrow_redo.png</file>
+        <file alias="images/arrow_undo.png">../resources/arrow_undo.png</file>
+        <file alias="images/cancel.png">../resources/cancel.png</file>
+        <file alias="images/color.png">../resources/color.png</file>
+        <file alias="images/copy.png">../resources/copy.png</file>
+        <file alias="images/cut.png">../resources/cut.png</file>
+        <file alias="images/find.png">../resources/find.png</file>
+        <file alias="images/font.png">../resources/font.png</file>
+        <file alias="images/new.png">../resources/new.png</file>
+        <file alias="images/open.png">../resources/open.png</file>
+        <file alias="images/paste.png">../resources/paste.png</file>
+        <file alias="images/save.png">../resources/save.png</file>
+        <file alias="images/saveas.png">../resources/saveas.png</file>
+        <file alias="images/select_all.png">../resources/select_all.png</file>
+        <file alias="images/text_bold.png">../resources/text_bold.png</file>
+        <file alias="images/text_italic.png">../resources/text_italic.png</file>
+        <file alias="images/text_replace.png">../resources/text_replace.png</file>
+        <file alias="images/text_strikethrough.png">../resources/text_strikethrough.png</file>
+        <file alias="images/text_underline.png">../resources/text_underline.png</file>
+        <file alias="images/zoom_in.png">../resources/zoom_in.png</file>
+        <file alias="images/zoom_out.png">../resources/zoom_out.png</file>
+        <file alias="images/explorer.png">../resources/explorer.png</file>
+        <file alias="images/add-file.png">../resources/add-file.png</file>
+        <file alias="images/add-folder.png">../resources/add-folder.png</file>
+        <file alias="images/close-icon.png">../resources/close-icon.png</file>
+        <file alias="images/delete.png">../resources/delete.png</file>
+        <file alias="images/rename.png">../resources/rename.png</file>
+        <file alias="images/writing.png">../resources/writing.png</file>
+        <file alias="settings/style.css">../resources/style.css</file>
+        <file alias="images/settings.png">../resources/settings.png</file>
+    </qresource>
+</RCC>

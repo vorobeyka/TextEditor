@@ -1,4 +1,4 @@
-#include "mainwindow.h"
+#include "./src/mainwindow.h"
 
 #include <QApplication>
 #include <QFile>
@@ -14,7 +14,7 @@ QString uploadStyles() {
         return res;
     }
 
-    QFile styles(":/files/images/style.css");
+    QFile styles(":/files/settings/style.css");
     QTextStream stream(&file);
     styles.open(QFile::ReadOnly);
     res = styles.readAll();
