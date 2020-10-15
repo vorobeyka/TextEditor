@@ -2,9 +2,10 @@
 
 #include <QApplication>
 #include <QFile>
+#include <QtCore>
 
 QString uploadStyles() {
-    QFile file("style.css");
+    QFile file(QCoreApplication::applicationDirPath() + "/" + "style.css");
     QString res = "";
 
     file.open(QFile::ReadWrite);
@@ -25,11 +26,7 @@ QString uploadStyles() {
 
 int main(int argc, char *argv[]) {
     QApplication a(argc, argv);
-//    QFile file("../utext/images/styles.css");
-//    QFile file(":/files/images/style.css");
-//    file.open(QFile::ReadOnly);
     a.setStyleSheet(uploadStyles());
-//    file.close();
 
     MainWindow w(&a);
     w.show();

@@ -5,8 +5,8 @@
 #include <fstream>
 
 QString MainWindow::setCSSColor(QString color) {
-    (void) color;
-    QString res = "QMenuBar,QLabel,QTreeView,QDialog,QPushButton,QLineEdit,QMenu{background-color: #474747; color: " + color + ";}";
+    QString res = "QPushButton{border:none}";
+    res += "QMenuBar,QLabel,QTreeView,QDialog,QPushButton,QLineEdit,QMenu{background-color: #474747; color: " + color + ";}";
     res += "QTextEdit {background-color: #474747;color: #ecf0f1;}";
     res += "QToolBar {border: none;background-color: " + color + ";}";
     res += "QMenu {border: none;}";
@@ -18,16 +18,16 @@ void MainWindow::on_actionSettings_triggered() {
     SettingsDialog* dlg = new SettingsDialog(this);
     if (!dlg->exec()) return;
     if (dlg->Accepted) {
-        QFile file("./style.css");
-
-        if (!file.open(QIODevice::ReadWrite)) {
+        QFile file(QCoreApplication::applicationDirPath() + "/style.css");
+        if (!file.open(QIODevice::WriteOnly | QIODevice::Truncate)) {
             QMessageBox::critical(this, "Error", file.errorString());
             return;
         }
 
         QTextStream stream(&file);
-        stream << setCSSColor(dlg->color());
-        m_app->setStyleSheet(file.readAll());
+        QString str = setCSSColor(dlg->color());
+        stream << str;
+        m_app->setStyleSheet(str);
         file.close();
     }
 }
