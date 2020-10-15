@@ -457,6 +457,7 @@
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
+   <addaction name="actionSettings"/>
   </widget>
   <action name="actionNew">
    <property name="icon">
@@ -586,6 +587,9 @@
    <property name="text">
     <string>Find</string>
    </property>
+   <property name="toolTip">
+    <string>Find (Ctrl + F)</string>
+   </property>
    <property name="shortcut">
     <string>Ctrl+F</string>
    </property>
@@ -597,6 +601,9 @@
    </property>
    <property name="text">
     <string>Replace</string>
+   </property>
+   <property name="toolTip">
+    <string>Replace (Ctrl + R)</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+R</string>
@@ -648,9 +655,6 @@
    </property>
   </action>
   <action name="actionBold">
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
    <property name="icon">
     <iconset resource="resources.qrc">
      <normaloff>:/files/images/text_bold.png</normaloff>:/files/images/text_bold.png</iconset>
@@ -666,9 +670,6 @@
    </property>
   </action>
   <action name="actionItalic">
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
    <property name="icon">
     <iconset resource="resources.qrc">
      <normaloff>:/files/images/text_italic.png</normaloff>:/files/images/text_italic.png</iconset>
@@ -684,9 +685,6 @@
    </property>
   </action>
   <action name="actionUnderline">
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
    <property name="icon">
     <iconset resource="resources.qrc">
      <normaloff>:/files/images/text_underline.png</normaloff>:/files/images/text_underline.png</iconset>
@@ -702,9 +700,6 @@
    </property>
   </action>
   <action name="actionStrike">
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
    <property name="icon">
     <iconset resource="resources.qrc">
      <normaloff>:/files/images/text_strikethrough.png</normaloff>:/files/images/text_strikethrough.png</iconset>
@@ -832,6 +827,9 @@
    <property name="text">
     <string>Add file</string>
    </property>
+   <property name="toolTip">
+    <string>Add file (Alt + N)</string>
+   </property>
    <property name="shortcut">
     <string>Alt+N</string>
    </property>
@@ -879,6 +877,21 @@
    </property>
    <property name="shortcut">
     <string>Del</string>
+   </property>
+  </action>
+  <action name="actionSettings">
+   <property name="icon">
+    <iconset resource="resources.qrc">
+     <normaloff>:/files/images/settings.png</normaloff>:/files/images/settings.png</iconset>
+   </property>
+   <property name="text">
+    <string>Settings</string>
+   </property>
+   <property name="toolTip">
+    <string>Settings(Ctrl + Shift + I)</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+I</string>
    </property>
   </action>
  </widget>

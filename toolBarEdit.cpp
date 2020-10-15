@@ -2,6 +2,35 @@
 #include "mainwindow.h"
 #include <QtCore>
 #include <QInputDialog>
+#include <fstream>
+
+QString MainWindow::setCSSColor(QString color) {
+    (void) color;
+    QString res = "QMenuBar,QLabel,QTreeView,QDialog,QPushButton,QLineEdit,QMenu{background-color: #474747; color: " + color + ";}";
+    res += "QTextEdit {backgrou/*nd-color: #474747;color: #ecf0f1;}";
+    res += "QToolBar {border: none;background-color: " + color + ";}";
+    res += "QMenu {border: none;}";
+    res += "QLineEdit {border: 1px solid " + color + ";}";
+    return res;
+}
+
+void MainWindow::on_actionSettings_triggered() {
+//    QFile file("./images/styles.css");
+    QFile file(":/files/images/style.css");
+
+    if (!file.open(QIODevice::ReadWrite)) {
+        QMessageBox::critical(this, "Error", file.errorString());
+        return;
+    }
+    SettingsDialog* dlg = new SettingsDialog(this);
+    if (!dlg->exec()) return;
+
+
+    QTextStream stream(&file);
+    stream << setCSSColor(dlg->color());
+    m_app->setStyleSheet(file.readAll());
+
+}
 
 void MainWindow::on_actionExplorer_triggered() {
     if (m_isExplorerHide) {

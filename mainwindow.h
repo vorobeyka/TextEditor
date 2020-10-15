@@ -11,7 +11,9 @@
 #include <QColorDialog>
 #include <QFontDialog>
 #include <QTextEdit>
+#include <QApplication>
 
+#include "settingsdialog.h"
 #include "cplusplushighlighter.h"
 
 QT_BEGIN_NAMESPACE
@@ -22,7 +24,7 @@ class MainWindow : public QMainWindow {
     Q_OBJECT
 
 public:
-    MainWindow(QWidget *parent = nullptr);
+    MainWindow(QApplication* app, QWidget* parent = nullptr);
     ~MainWindow();
 
 private slots:
@@ -62,10 +64,12 @@ private slots:
     void on_actionAdd_folder_triggered();
     void on_actionRename_triggered();
     void on_actionDelete_triggered();
+    void on_actionSettings_triggered();
 
 private:
     Ui::MainWindow *ui;
     QFileSystemModel *m_DirsList { new QFileSystemModel(this) };
+    QApplication* m_app;
 
     enum class FileType {
         CPP,
@@ -100,6 +104,8 @@ private:
     void hideReplace();
     void renameFile();
     void renameFolder(QDir);
+
+    QString setCSSColor(QString);
     // QWidget interface
 
 protected:

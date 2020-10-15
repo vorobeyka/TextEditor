@@ -5,7 +5,7 @@
 #include <QDir>
 #include <QInputDialog>
 
-MainWindow::MainWindow(QWidget *parent)
+MainWindow::MainWindow(QApplication* app, QWidget* parent)
     : QMainWindow(parent), ui(new Ui::MainWindow) {
     ui->setupUi(this);
     this->setWindowTitle("uText");
@@ -13,6 +13,7 @@ MainWindow::MainWindow(QWidget *parent)
     setTreeView(QDir::homePath());
     m_path = "";
     m_defaultFont = ui->textEdit->currentFont();
+    m_app = app;
 
     hideFind();
     hideReplace();
@@ -83,7 +84,7 @@ void MainWindow::closeEvent(QCloseEvent *event) {
 }
 
 void MainWindow::on_actionNew_window_triggered() {
-    MainWindow* newWindow = new MainWindow();
+    MainWindow* newWindow = new MainWindow(m_app);
     newWindow->show();
 }
 
