@@ -6,8 +6,8 @@
 
 QString MainWindow::setCSSColor(QString color) {
     QString res = "QPushButton{border:none}";
-    res += "QMenuBar,QLabel,QTreeView,QDialog,QPushButton,QLineEdit,QMenu{background-color: #474747; color: " + color + ";}";
-    res += "QTextEdit {background-color: #474747;color: #ecf0f1;}";
+    res += "QMenuBar,QLabel,QTreeView,QDialog,QPushButton,QLineEdit,QMenu{background-color: #362821; color: " + color + ";}";
+    res += "QTextEdit {background-color: #362821;color: #ecf0f1;}";
     res += "QToolBar {border: none;background-color: " + color + ";}";
     res += "QMenu {border: none;}";
     res += "QLineEdit {border: 1px solid " + color + ";}";
